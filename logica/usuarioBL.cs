@@ -1,4 +1,4 @@
-﻿using ClassLibrary1;
+﻿using Entidades;
 using datos;
 using System;
 using System.Collections.Generic;

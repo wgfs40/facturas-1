@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-using ClassLibrary1;
+using Entidades;
 using datos;
 
 

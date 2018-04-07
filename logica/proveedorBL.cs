@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ClassLibrary1;
+using Entidades;
 using System.Data;
 using datos;
 

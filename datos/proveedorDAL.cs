@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Data;
-using ClassLibrary1;
+using Entidades;
 
 namespace datos
 {
