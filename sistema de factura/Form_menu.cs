@@ -1,4 +1,5 @@
-﻿using System;
+﻿using logica;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,9 +12,11 @@ namespace sistema_de_factura
 {
     public partial class Form_menu : Form
     {
+        private usuarioBL usuarioBL;
         public Form_menu()
         {
             InitializeComponent();
+            usuarioBL = new usuarioBL();
         }
 
         private void crearToolStripMenuItem_Click(object sender, EventArgs e)
@@ -27,7 +30,16 @@ namespace sistema_de_factura
             Form_ListarUsuario frmlistarusuario = new Form_ListarUsuario();
             if (frmlistarusuario.ShowDialog() == DialogResult.OK)
             {
+                var usuario = usuarioBL.ObtenerUsuarioPorId(frmlistarusuario.Usuarioid);
+                if (usuario != null)
+                {
 
+                }
+                else
+                {
+                    MessageBox.Show("El usuario no existe!","Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
             }
         }
     }

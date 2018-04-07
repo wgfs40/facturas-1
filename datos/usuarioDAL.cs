@@ -132,5 +132,45 @@ namespace datos
             }
             return Dt;
         }
+
+        public usuario ObtenerUsuario(int usuarioid)
+        {
+            try
+            {
+                usuario usuario = new usuario();
+                string sql = "select usuarioid,usuario,estatus from usuario where usuarioid = @usuid";
+                ComandoSQL = new SqlCommand();
+                ComandoSQL.Connection = AccesoDatos.ObtenerConexion();
+                ComandoSQL.CommandText = sql;
+                ComandoSQL.CommandType = CommandType.Text;
+
+                ComandoSQL.Parameters.AddWithValue("@usuid", usuarioid);
+
+                using (var lector = ComandoSQL.ExecuteReader(CommandBehavior.CloseConnection))
+                {
+                    if (lector.Read())
+                    {
+                        usuario.UsuarioId = lector.GetInt32(0);
+                        usuario.Usuario = lector.GetString(1);
+                        usuario.Estatus = lector.GetString(2);
+                    }
+
+                }
+
+
+                return usuario;
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+            finally {
+                
+            }
+           
+
+
+        }
     }
 }

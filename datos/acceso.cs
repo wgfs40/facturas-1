@@ -32,7 +32,14 @@ namespace datos
 
         public SqlConnection ObtenerConexion()
         {
+            Conexion.Open();
             return Conexion;
+        }
+
+        public void CerrarConexion()
+        {
+            Conexion.Close();
+            Conexion.Dispose();
         }
     }
 }

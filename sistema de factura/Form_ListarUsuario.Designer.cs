@@ -53,6 +53,7 @@
             this.dataGridViewUsuario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewUsuario.Size = new System.Drawing.Size(735, 317);
             this.dataGridViewUsuario.TabIndex = 0;
+            this.dataGridViewUsuario.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsuario_CellDoubleClick);
             // 
             // groupBox1
             // 

@@ -31,5 +31,10 @@ namespace logica
         {
             return usuarioDAL.ValidarUsuario(nombreusuario,clave);
         }
+
+        public usuario ObtenerUsuarioPorId(int usuarioid)
+        {
+            return usuarioDAL.ObtenerUsuario(usuarioid);
+        }
     }
 }

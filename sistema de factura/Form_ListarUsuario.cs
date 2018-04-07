@@ -26,5 +26,16 @@ namespace sistema_de_factura
                 usuarioBL.ListarUsuario(txtBusqueda.Text);
                 
         }
+
+        private void dataGridViewUsuario_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Usuarioid = Convert.ToInt32(dataGridViewUsuario.CurrentRow.Cells["ColumncodUsuario"].Value);
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+
+        }
+
+        public int Usuarioid { get; set; }
+
     }
 }
