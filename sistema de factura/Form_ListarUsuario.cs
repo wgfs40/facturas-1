@@ -17,6 +17,7 @@ namespace sistema_de_factura
         {
             InitializeComponent();
             usuarioBL = new usuarioBL();
+            dataGridViewUsuario.AutoGenerateColumns = false;
         }
 
         private void btnBusqueda_Click(object sender, EventArgs e)

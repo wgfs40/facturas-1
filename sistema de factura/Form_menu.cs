@@ -21,5 +21,14 @@ namespace sistema_de_factura
             Form_CrearUsuario frmusuario = new Form_CrearUsuario();
             frmusuario.Show();
         }
+
+        private void listarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ListarUsuario frmlistarusuario = new Form_ListarUsuario();
+            if (frmlistarusuario.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
     }
 }

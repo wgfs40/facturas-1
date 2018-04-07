@@ -66,7 +66,8 @@
             // 
             this.listarToolStripMenuItem.Name = "listarToolStripMenuItem";
             this.listarToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.listarToolStripMenuItem.Text = "Listar";
+            this.listarToolStripMenuItem.Text = "Actualizar";
+            this.listarToolStripMenuItem.Click += new System.EventHandler(this.listarToolStripMenuItem_Click);
             // 
             // Form_menu
             // 

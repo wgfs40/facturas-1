@@ -50,6 +50,7 @@
             this.dataGridViewUsuario.Name = "dataGridViewUsuario";
             this.dataGridViewUsuario.ReadOnly = true;
             this.dataGridViewUsuario.RowTemplate.Height = 24;
+            this.dataGridViewUsuario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewUsuario.Size = new System.Drawing.Size(735, 317);
             this.dataGridViewUsuario.TabIndex = 0;
             // 
@@ -84,6 +85,7 @@
             // ColumncodUsuario
             // 
             this.ColumncodUsuario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumncodUsuario.DataPropertyName = "usuarioid";
             this.ColumncodUsuario.HeaderText = "Codigo de usuario";
             this.ColumncodUsuario.Name = "ColumncodUsuario";
             this.ColumncodUsuario.ReadOnly = true;
@@ -91,6 +93,7 @@
             // Columnusuario
             // 
             this.Columnusuario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Columnusuario.DataPropertyName = "usuario";
             this.Columnusuario.HeaderText = "Nombre de usuario";
             this.Columnusuario.Name = "Columnusuario";
             this.Columnusuario.ReadOnly = true;
