@@ -39,8 +39,7 @@ namespace datos
         }
 
         public void InsertarClientes(cliente cliente)
-        {
-            AccesoDatos.ObtenerConexion().Open();
+        {           
             using (ComandoSQL = new SqlCommand())
             {
                 ComandoSQL.Connection = AccesoDatos.ObtenerConexion();
@@ -65,7 +64,7 @@ namespace datos
                 }
                 finally
                 {
-                    AccesoDatos.ObtenerConexion().Close();
+                    AccesoDatos.CerrarConexion();
                 }
             }
 
@@ -73,9 +72,7 @@ namespace datos
 
         public void EliminarClientes(cliente cliente)
         {
-            AccesoDatos.ObtenerConexion().Open();
-
-
+           
             using (ComandoSQL = new SqlCommand())
             {
                 ComandoSQL.Connection = AccesoDatos.ObtenerConexion();
@@ -96,7 +93,7 @@ namespace datos
                 }
                 finally
                 {
-                    AccesoDatos.ObtenerConexion().Close();
+                    AccesoDatos.CerrarConexion();
                 }
 
             }
@@ -109,9 +106,6 @@ namespace datos
                            "DIRECCION =@Direccion, PAIS = @Pais," +
                            "SALDO_INIC = @SaldoIni," +
                            "SALDO_FINAL = @SaldoFinal WHERE ID_CLIENTE = @IdCliente";
-
-            AccesoDatos.ObtenerConexion().Open();
-
 
             using (ComandoSQL = new SqlCommand())
             {
@@ -137,7 +131,7 @@ namespace datos
                 }
                 finally
                 {
-                    AccesoDatos.ObtenerConexion().Close();
+                    AccesoDatos.CerrarConexion();
                 }
 
             }
@@ -145,8 +139,7 @@ namespace datos
         }
 
         public DataTable BusquedaClientes(string parametro, string opcion)
-        {
-            AccesoDatos.ObtenerConexion().Open();
+        {           
             string query = string.Empty;
 
             if (opcion.Equals("Nombre"))
@@ -184,7 +177,7 @@ namespace datos
 
                 finally
                 {
-                    AccesoDatos.ObtenerConexion().Close();
+                    AccesoDatos.CerrarConexion();
                 }
 
                 return Dt;
@@ -193,8 +186,7 @@ namespace datos
 
         public bool ComprobarForanea(int id_jefe)
         {
-            bool valor = false;
-            AccesoDatos.ObtenerConexion().Open();
+            bool valor = false;          
 
             string Query = "SELECT ID_JEFE FROM VENDEDOR WHERE ID_JEFE = @ID";
 
@@ -220,7 +212,7 @@ namespace datos
 
                 finally
                 {
-                    AccesoDatos.ObtenerConexion().Close();
+                    AccesoDatos.CerrarConexion();
                 }
             }
             return valor;

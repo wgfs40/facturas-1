@@ -22,18 +22,20 @@ namespace sistema_de_factura
         private void crearToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_CrearUsuario frmusuario = new Form_CrearUsuario();
+            frmusuario.MdiParent = this;
             frmusuario.Show();
         }
 
         private void listarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_ListarUsuario frmlistarusuario = new Form_ListarUsuario();
+            
             if (frmlistarusuario.ShowDialog() == DialogResult.OK)
-            {
+            {               
                 var usuario = usuarioBL.ObtenerUsuarioPorId(frmlistarusuario.Usuarioid);
                 if (usuario != null)
                 {
-                    Form_CrearUsuario actualizarusuario = new Form_CrearUsuario(usuario);
+                    Form_CrearUsuario actualizarusuario = new Form_CrearUsuario(usuario);                    
                     if(actualizarusuario.ShowDialog() == DialogResult.OK)
                     {
                         MessageBox.Show("el usuario ha sido Guardado con exito.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -47,6 +49,18 @@ namespace sistema_de_factura
                     return;
                 }
             }
+        }
+
+        private void mantenimientoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Mantenimiento_Cliente mantenimiento_Cliente = new Form_Mantenimiento_Cliente();
+            mantenimiento_Cliente.MdiParent = this;
+            mantenimiento_Cliente.Show();
+        }
+
+        private void Form_menu_Load(object sender, EventArgs e)
+        {
+            statusStrip1.Items[1].Text = Global.nombreusuario;
         }
     }
 }

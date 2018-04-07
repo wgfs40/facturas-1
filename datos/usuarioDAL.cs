@@ -85,31 +85,39 @@ namespace datos
 
         }
 
-        public bool ValidarUsuario(string nombreusuario, string clave)
+        public usuario ValidarUsuario(string nombreusuario, string clave)
         {
-          
+            usuario usuario;
             using (ComandoSQL = new SqlCommand())
-            {
+            {                
                 ComandoSQL.Connection = AccesoDatos.ObtenerConexion();
                 ComandoSQL.CommandType = CommandType.StoredProcedure;
                 ComandoSQL.CommandText = "UspValidarUsuario";
                 try
                 {
                     
+
                     ComandoSQL.Parameters.AddWithValue("@usu", nombreusuario);
                     ComandoSQL.Parameters.AddWithValue("@cla", clave);
 
                     using (SqlDataReader reader = ComandoSQL.ExecuteReader(CommandBehavior.CloseConnection))
                     {
-                        if (reader.HasRows)
+                        if (reader.Read())
                         {
-                            return true;
+                            usuario = new usuario
+                            {
+                                UsuarioId = reader.GetInt32(0),
+                                Usuario = reader.GetString(1)
+                            };
                         }
                         else
                         {
-                            return false;
+                            return null;
                         }
+                        
                     }
+
+                    return usuario;
                 }
                 catch (Exception ex)
                 {

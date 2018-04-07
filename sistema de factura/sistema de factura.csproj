@@ -64,12 +64,19 @@
     <Compile Include="Form_Login.Designer.cs">
       <DependentUpon>Form_Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Mantenimiento_Cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Mantenimiento_Cliente.Designer.cs">
+      <DependentUpon>Form_Mantenimiento_Cliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_menu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form_menu.Designer.cs">
       <DependentUpon>Form_menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Global.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form_CrearUsuario.resx">
@@ -80,6 +87,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Login.resx">
       <DependentUpon>Form_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Mantenimiento_Cliente.resx">
+      <DependentUpon>Form_Mantenimiento_Cliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_menu.resx">
       <DependentUpon>Form_menu.cs</DependentUpon>
@@ -92,6 +102,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -112,6 +123,48 @@
       <Project>{200e1058-0469-4673-8774-0234fb49fb23}</Project>
       <Name>logica</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3-cliente-icono-8594-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2001-add.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\12492104-cesta-de-la-compra-icono-de-la-cesta-de-productos--ilustracion-vectorial - Copy.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\business-wallpaper-61.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_square161_h.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\factory_yellow_98253.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico_004.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico002.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico-clientes.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono plata.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\productos.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_document161.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\200-add.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh16.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

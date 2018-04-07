@@ -42,10 +42,12 @@ namespace sistema_de_factura
                 txtusuario.Focus();
                 return;
             }
-
-            if (usuarioBL.ValidarUsuario(usuario,clave))
+            var usuario_validar = usuarioBL.ValidarUsuario(usuario, clave);
+            if (usuario_validar != null)
             {
                 this.DialogResult = DialogResult.OK;
+                Global.usuarioid = usuario_validar.UsuarioId;
+                Global.nombreusuario = usuario_validar.Usuario;
             }
             else
             {

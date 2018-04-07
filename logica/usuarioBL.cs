@@ -27,7 +27,7 @@ namespace logica
             return usuarioDAL.ListaUsuario(busqueda);
         }
 
-        public bool ValidarUsuario(string nombreusuario, string clave)
+        public usuario ValidarUsuario(string nombreusuario, string clave)
         {
             return usuarioDAL.ValidarUsuario(nombreusuario,clave);
         }
