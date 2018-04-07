@@ -52,6 +52,12 @@
     <Compile Include="Form_CrearUsuario.Designer.cs">
       <DependentUpon>Form_CrearUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cliente\Form_listaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente\Form_listaCliente.Designer.cs">
+      <DependentUpon>Form_listaCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_ListarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,10 +70,10 @@
     <Compile Include="Form_Login.Designer.cs">
       <DependentUpon>Form_Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_Mantenimiento_Cliente.cs">
+    <Compile Include="Cliente\Form_Mantenimiento_Cliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_Mantenimiento_Cliente.Designer.cs">
+    <Compile Include="Cliente\Form_Mantenimiento_Cliente.Designer.cs">
       <DependentUpon>Form_Mantenimiento_Cliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_menu.cs">
@@ -82,13 +88,16 @@
     <EmbeddedResource Include="Form_CrearUsuario.resx">
       <DependentUpon>Form_CrearUsuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Cliente\Form_listaCliente.resx">
+      <DependentUpon>Form_listaCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_ListarUsuario.resx">
       <DependentUpon>Form_ListarUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Login.resx">
       <DependentUpon>Form_Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_Mantenimiento_Cliente.resx">
+    <EmbeddedResource Include="Cliente\Form_Mantenimiento_Cliente.resx">
       <DependentUpon>Form_Mantenimiento_Cliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_menu.resx">
@@ -165,6 +174,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\refresh16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xmag.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

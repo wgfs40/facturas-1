@@ -44,10 +44,10 @@ namespace datos
             {
                 ComandoSQL.Connection = AccesoDatos.ObtenerConexion();
                 ComandoSQL.CommandType = CommandType.StoredProcedure;
-                ComandoSQL.CommandText = "INSERTARCLIENTES";
+                ComandoSQL.CommandText = "proc_CLIENTEInsert";
                 try
                 {
-                    ComandoSQL.Parameters.AddWithValue("@IdCliente", cliente.ID_CLIENTE);
+                    //ComandoSQL.Parameters.AddWithValue("@IdCliente", cliente.ID_CLIENTE);
                     ComandoSQL.Parameters.AddWithValue("@NombCliente", cliente.NOMB_CLIENTE);
                     ComandoSQL.Parameters.AddWithValue("@Direccion", cliente.DIRECCION);
                     ComandoSQL.Parameters.AddWithValue("@Pais", cliente.PAIS);
