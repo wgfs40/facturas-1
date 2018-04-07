@@ -32,7 +32,12 @@ namespace datos
 
         public SqlConnection ObtenerConexion()
         {
-            Conexion.Open();
+            if (Conexion.State == System.Data.ConnectionState.Closed)
+            {
+                Conexion.ConnectionString = CadenaConexion;
+                Conexion.Open();
+            }
+           
             return Conexion;
         }
 

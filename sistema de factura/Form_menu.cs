@@ -33,6 +33,12 @@ namespace sistema_de_factura
                 var usuario = usuarioBL.ObtenerUsuarioPorId(frmlistarusuario.Usuarioid);
                 if (usuario != null)
                 {
+                    Form_CrearUsuario actualizarusuario = new Form_CrearUsuario(usuario);
+                    if(actualizarusuario.ShowDialog() == DialogResult.OK)
+                    {
+                        MessageBox.Show("el usuario ha sido Guardado con exito.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
 
                 }
                 else

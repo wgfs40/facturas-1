@@ -26,7 +26,7 @@ namespace datos
 
         public void InsertarUsuario(usuario usuario)
         {
-            AccesoDatos.ObtenerConexion().Open();
+            
             using (ComandoSQL = new SqlCommand())
             {
                 ComandoSQL.Connection = AccesoDatos.ObtenerConexion();
@@ -48,7 +48,7 @@ namespace datos
                 }
                 finally
                 {
-                    AccesoDatos.ObtenerConexion().Close();
+                    AccesoDatos.CerrarConexion();
                 }
             }
 
@@ -56,7 +56,7 @@ namespace datos
 
         public void ActualizarUsuario(usuario usuario)
         {
-            AccesoDatos.ObtenerConexion().Open();
+            
             using (ComandoSQL = new SqlCommand())
             {
                 ComandoSQL.Connection = AccesoDatos.ObtenerConexion();
@@ -64,21 +64,22 @@ namespace datos
                 ComandoSQL.CommandText = "proc_ACTUALIZARUAURIO";
                 try
                 {
-                    ComandoSQL.Parameters.AddWithValue("@usuarioid", usuario.UsuarioId);
+                    ComandoSQL.Parameters.AddWithValue("@usarioid", usuario.UsuarioId);
                     ComandoSQL.Parameters.AddWithValue("@nombreusuario", usuario.Usuario);
                     ComandoSQL.Parameters.AddWithValue("@clave", usuario.Clave);
+                    ComandoSQL.Parameters.AddWithValue("@estatus", "A");
 
                     //Ejecutar Comando
                     ComandoSQL.ExecuteNonQuery();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw;
+                    throw new ApplicationException("Error al actualizar usuario " + ex.Message);
 
                 }
                 finally
                 {
-                    AccesoDatos.ObtenerConexion().Close();
+                    AccesoDatos.CerrarConexion();
                 }
             }
 
@@ -86,7 +87,7 @@ namespace datos
 
         public bool ValidarUsuario(string nombreusuario, string clave)
         {
-            AccesoDatos.ObtenerConexion().Open();
+          
             using (ComandoSQL = new SqlCommand())
             {
                 ComandoSQL.Connection = AccesoDatos.ObtenerConexion();
@@ -112,12 +113,11 @@ namespace datos
                 }
                 catch (Exception ex)
                 {
-                    throw;
-
+                    throw new ApplicationException("Error al validar usuario"+  ex.Message);
                 }
                 finally
                 {
-                    AccesoDatos.ObtenerConexion().Close();
+                    AccesoDatos.CerrarConexion();
                 }
             }
         }
@@ -152,7 +152,7 @@ namespace datos
                     {
                         usuario.UsuarioId = lector.GetInt32(0);
                         usuario.Usuario = lector.GetString(1);
-                        usuario.Estatus = lector.GetString(2);
+                        usuario.Estatus = lector.IsDBNull(2)? "" : lector.GetString(2);
                     }
 
                 }
@@ -162,11 +162,11 @@ namespace datos
             }
             catch (Exception ex)
             {
-
+                throw new ApplicationException("Error en el acceso a datos: " + ex.Message);
 
             }
             finally {
-                
+                AccesoDatos.CerrarConexion();
             }
            
 
