@@ -27,11 +27,13 @@ namespace sistema_de_factura
 
         private void dataGridViewCliente_DoubleClick(object sender, EventArgs e)
         {
-            UsuarioId = Convert.ToInt32(dataGridViewCliente.CurrentRow.Cells[0].Value);
+            ClienteID = Convert.ToInt32(dataGridViewCliente.CurrentRow.Cells[0].Value);
+            Options = cboOpcion.Text;
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
-        public int UsuarioId { get; set; }
+        public int ClienteID { get; set; }
+        public string Options { get; set; }
     }
 }

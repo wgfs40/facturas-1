@@ -26,11 +26,11 @@ namespace logica
 
         }
 
-        public void EliminarClientes(cliente entidad)
+        public void EliminarClientes(int clienteid)
         {
             clienteDAL EliminacionCliente = new clienteDAL();
 
-            EliminacionCliente.EliminarClientes(entidad);
+            EliminacionCliente.EliminarClientes(clienteid);
         }
 
         public void ActualizarClientes(cliente entidad)
@@ -48,5 +48,11 @@ namespace logica
             return BusquedaCliente.BusquedaClientes(parametro, opcion);
         }
 
+
+        public cliente ObtenerClientePorId(int clienteid)
+        {
+            clienteDAL clienteDAL = new clienteDAL();
+            return clienteDAL.ObtenerClientePorID(clienteid);
+        }
     }
 }

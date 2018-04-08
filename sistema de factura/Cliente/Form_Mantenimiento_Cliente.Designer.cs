@@ -46,8 +46,8 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtSaldoInicial = new System.Windows.Forms.MaskedTextBox();
-            this.txtSaldoFinal = new System.Windows.Forms.MaskedTextBox();
+            this.txtSaldoInicial = new System.Windows.Forms.TextBox();
+            this.txtSaldoFinal = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -220,18 +220,16 @@
             // txtSaldoInicial
             // 
             this.txtSaldoInicial.Location = new System.Drawing.Point(6, 57);
-            this.txtSaldoInicial.Mask = "$RD 999,999.00";
             this.txtSaldoInicial.Name = "txtSaldoInicial";
-            this.txtSaldoInicial.Size = new System.Drawing.Size(167, 29);
-            this.txtSaldoInicial.TabIndex = 8;
+            this.txtSaldoInicial.Size = new System.Drawing.Size(221, 29);
+            this.txtSaldoInicial.TabIndex = 10;
             // 
             // txtSaldoFinal
             // 
             this.txtSaldoFinal.Location = new System.Drawing.Point(6, 118);
-            this.txtSaldoFinal.Mask = "$RD 999,999.00";
             this.txtSaldoFinal.Name = "txtSaldoFinal";
-            this.txtSaldoFinal.Size = new System.Drawing.Size(167, 29);
-            this.txtSaldoFinal.TabIndex = 9;
+            this.txtSaldoFinal.Size = new System.Drawing.Size(221, 29);
+            this.txtSaldoFinal.TabIndex = 11;
             // 
             // Form_Mantenimiento_Cliente
             // 
@@ -275,7 +273,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.MaskedTextBox txtSaldoInicial;
-        private System.Windows.Forms.MaskedTextBox txtSaldoFinal;
+        private System.Windows.Forms.TextBox txtSaldoFinal;
+        private System.Windows.Forms.TextBox txtSaldoInicial;
     }
 }

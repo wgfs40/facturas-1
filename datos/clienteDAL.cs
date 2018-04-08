@@ -70,17 +70,17 @@ namespace datos
 
         }
 
-        public void EliminarClientes(cliente cliente)
+        public void EliminarClientes(int clienteid)
         {
            
             using (ComandoSQL = new SqlCommand())
             {
                 ComandoSQL.Connection = AccesoDatos.ObtenerConexion();
-               // ComandoSQL.CommandType = CommandType.StoredProcedure;
-                ComandoSQL.CommandText = "DELETE FROM CLIENTE WHERE ID_CLIENTE] = @IdCliente";
+                ComandoSQL.CommandType = CommandType.Text;
+                ComandoSQL.CommandText = "DELETE FROM CLIENTE WHERE ID_CLIENTE = @IdCliente";
                 try
                 {
-                    ComandoSQL.Parameters.AddWithValue("@IdCliente", cliente.ID_CLIENTE);
+                    ComandoSQL.Parameters.AddWithValue("@IdCliente", clienteid);
                   
 
                     //Ejecutar Comando
@@ -102,15 +102,15 @@ namespace datos
 
         public void ActualizarClientes(cliente cliente)
         {
-            string query = "UPDATE CLIENTES SET NOMB_CLIENTE =@NombCliente," +
+            string query = "UPDATE CLIENTE SET NOMB_CLIENTE =@NombCliente," +
                            "DIRECCION =@Direccion, PAIS = @Pais," +
-                           "SALDO_INIC = @SaldoIni," +
+                           "SALDO_INI = @SaldoIni," +
                            "SALDO_FINAL = @SaldoFinal WHERE ID_CLIENTE = @IdCliente";
 
             using (ComandoSQL = new SqlCommand())
             {
                 ComandoSQL.Connection = AccesoDatos.ObtenerConexion();
-                // ComandoSQL.CommandType = CommandType.StoredProcedure;
+                ComandoSQL.CommandType = CommandType.Text;
                 ComandoSQL.CommandText = query;
                 try
                 {
@@ -216,6 +216,47 @@ namespace datos
                 }
             }
             return valor;
+
+        }
+
+        public cliente ObtenerClientePorID(int clienteid)
+        {
+            try
+            {
+                cliente cliente = new cliente();               
+                ComandoSQL = new SqlCommand();
+                ComandoSQL.Connection = AccesoDatos.ObtenerConexion();
+                ComandoSQL.CommandText = "proc_CLIENTELoadByPrimaryKey";
+                ComandoSQL.CommandType = CommandType.StoredProcedure;
+
+                ComandoSQL.Parameters.AddWithValue("@IdCliente", clienteid);
+
+                using (var lector = ComandoSQL.ExecuteReader(CommandBehavior.CloseConnection))
+                {
+                    if (lector.Read())
+                    {
+                        cliente.ID_CLIENTE = lector.GetInt32(0);
+                        cliente.NOMB_CLIENTE = lector.GetString(1);
+                        cliente.DIRECCION = lector.GetString(2);
+                        cliente.PAIS = lector.GetString(3);
+                        cliente.SALDO_INI = (float)Convert.ToDouble(lector["SALDO_INI"]);
+                        cliente.SALDO_FINAL =(float)Convert.ToDouble(lector["SALDO_FINAL"]);
+                    }
+
+                }
+
+
+                return cliente;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error en el acceso a datos: " + ex.Message);
+
+            }
+            finally
+            {
+                AccesoDatos.CerrarConexion();
+            }
 
         }
     }
