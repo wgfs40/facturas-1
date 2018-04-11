@@ -27,7 +27,7 @@ namespace logica
         public void ActualizarProductos(producto entidad)
         {
             productoDAL ActualizarProductos = new productoDAL();
-            ActualizarProductos.ActualizarProducto(entidad);
+            ActualizarProductos.Actualizarproducto(entidad);
         }
 
         public void EliminarProductos(producto entidad)
@@ -39,12 +39,18 @@ namespace logica
         public DataTable BuscarProductos(string param, string opcion)
         {
             productoDAL Buscar = new productoDAL();
-            return Buscar.Buscarproducto(param, opcion);
+            return Buscar.BuscarProductos(param, opcion);
         }
 
         public bool ComprobarForanea(int ID_PROVEEDOR)
         {
             return new productoDAL().ComprobarForanea(ID_PROVEEDOR);
+        }
+
+        public producto ObtenerProductoPorId(int productoid)
+        {
+            productoDAL productoDAL = new productoDAL();
+            return productoDAL.ObtenerproductoPorId(productoid);
         }
     }
 }

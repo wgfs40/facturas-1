@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Producto\Form_BuscarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Producto\Form_BuscarProducto.Designer.cs">
+      <DependentUpon>Form_BuscarProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_CrearUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,8 +89,17 @@
       <DependentUpon>Form_menu.cs</DependentUpon>
     </Compile>
     <Compile Include="Global.cs" />
+    <Compile Include="Producto\Form_MantenimientoProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Producto\Form_MantenimientoProducto.Designer.cs">
+      <DependentUpon>Form_MantenimientoProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Producto\Form_BuscarProducto.resx">
+      <DependentUpon>Form_BuscarProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_CrearUsuario.resx">
       <DependentUpon>Form_CrearUsuario.cs</DependentUpon>
     </EmbeddedResource>
@@ -102,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_menu.resx">
       <DependentUpon>Form_menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Producto\Form_MantenimientoProducto.resx">
+      <DependentUpon>Form_MantenimientoProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -178,9 +196,7 @@
   <ItemGroup>
     <None Include="Resources\xmag.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Producto\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

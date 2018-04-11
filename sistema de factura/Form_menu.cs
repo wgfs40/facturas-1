@@ -1,4 +1,5 @@
 ﻿using logica;
+using sistema_de_factura.Producto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -61,6 +62,13 @@ namespace sistema_de_factura
         private void Form_menu_Load(object sender, EventArgs e)
         {
             statusStrip1.Items[1].Text = Global.nombreusuario;
+        }
+
+        private void mantenimientoDeProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_MantenimientoProducto mantenimientoProducto = new Form_MantenimientoProducto();
+            mantenimientoProducto.MdiParent = this;
+            mantenimientoProducto.Show();
         }
     }
 }

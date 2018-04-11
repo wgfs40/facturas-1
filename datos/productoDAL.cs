@@ -28,7 +28,8 @@ namespace datos
 
         public DataTable ObtenerProductos()
         {
-            string query = "Select * From PRODUCTO";
+            string query = "select p.ID_PRODUCTO,p.DESC_PRODUCTO,pr.NOMB_PROVEEDOR,p.COSTO,p.PRECIO from PRODUCTO p " +
+                        "inner join PROVEEDOR pr on p.ID_PROVEEDOR = pr.ID_PROVEEDOR";
             using (AdaptadorSQL = new SqlDataAdapter(query, AccesoDatos.ObtenerConexion()))
             {
                 Dt = new DataTable();
@@ -41,8 +42,8 @@ namespace datos
 
         public void InsertarProducto(producto producto)
         {
-            AccesoDatos.ObtenerConexion().Open();
-            string Query = "INSERT INTO PRODUCTO VALUES(@IdProducto,@DescProducto,@IdProveedor,@Costo,@Precio)";
+           
+            string Query = "INSERT INTO PRODUCTO VALUES(@DescProducto,@IdProveedor,@Costo,@Precio)";
 
             using (ComandoSQL = new SqlCommand())
             {
@@ -50,8 +51,7 @@ namespace datos
                 //ComandoSQL.CommandType = CommandType.StoredProcedure;
                 ComandoSQL.CommandText = Query;
                 try
-                {
-                    ComandoSQL.Parameters.AddWithValue("@IdProducto", producto.ID_PRODUCTO);
+                {                  
                     ComandoSQL.Parameters.AddWithValue("@DescProducto", producto.DESC_PRODUCTO);
                     ComandoSQL.Parameters.AddWithValue("@IdProveedor", producto.ID_PROVEEDOR);
                     ComandoSQL.Parameters.AddWithValue("@Costo", producto.COSTO);
@@ -68,7 +68,7 @@ namespace datos
                 }
                 finally
                 {
-                    AccesoDatos.ObtenerConexion().Close();
+                    AccesoDatos.CerrarConexion();
                 }
             }
 
@@ -77,7 +77,7 @@ namespace datos
         public void Actualizarproducto(producto producto)
         {
 
-            AccesoDatos.ObtenerConexion().Open();
+           
 
             string Query = "UPDATE PRODUCTO SET DESC_PRODUCTO =@DescProducto," +
                             "ID_PROVEEDOR = @IdProveedor," +
@@ -110,15 +110,13 @@ namespace datos
 
                 finally
                 {
-                    AccesoDatos.ObtenerConexion().Close();
+                    AccesoDatos.CerrarConexion();
                 }
             }
         }
 
         public void Eliminarproducto (producto productos)
-        {
-
-            AccesoDatos.ObtenerConexion().Open();
+        {           
 
             string Query = "DELETE FROM PRODUCTO WHERE ID_PRODUCTO =@IdProducto";
 
@@ -142,7 +140,7 @@ namespace datos
 
                 finally
                 {
-                    AccesoDatos.ObtenerConexion().Close();
+                    AccesoDatos.CerrarConexion();
                 }
             }
 
@@ -151,21 +149,24 @@ namespace datos
         public DataTable BuscarProductos(string param, string opcion)
         {
             string query = string.Empty;
-
-            if (opcion.Equals("Descripcion"))
-            {
-                query = "SELECT * FROM PRODUCTO WHERE DESC_PRODUCTO LIKE @PARAM";
-            }
-            else
-            {
-                query = "SELECT * FROM PRODUCTO WHERE ID_PROVEEDOR LIKE @PARAM";
-            }
-            AccesoDatos.ObtenerConexion().Open();
             using (ComandoSQL = new SqlCommand())
             {
+                if (opcion.Equals("Descripcion"))
+                {
+                    query = "select p.ID_PRODUCTO,p.DESC_PRODUCTO,pr.NOMB_PROVEEDOR,p.COSTO,p.PRECIO from PRODUCTO p " +
+                            "inner join PROVEEDOR pr on p.ID_PROVEEDOR = pr.ID_PROVEEDOR WHERE p.DESC_PRODUCTO LIKE @PARAM";
+                    ComandoSQL.Parameters.AddWithValue("@PARAM", "%" + param + "%");
+                }
+                else
+                {
+                    query = "select p.ID_PRODUCTO,p.DESC_PRODUCTO,pr.NOMB_PROVEEDOR,p.COSTO,p.PRECIO from PRODUCTO p " +
+                            "inner join PROVEEDOR pr on p.ID_PROVEEDOR = pr.ID_PROVEEDOR WHERE p.ID_PRODUCTO in(@PARAM)";
+                    ComandoSQL.Parameters.AddWithValue("@PARAM",int.Parse(param));
+                }
+
                 ComandoSQL.Connection =  AccesoDatos.ObtenerConexion();
                 ComandoSQL.CommandText = query;
-                ComandoSQL.Parameters.AddWithValue("@PARAM", "%" + param + "%");
+               
                 try
                 {
                     using (AdaptadorSQL = new SqlDataAdapter())
@@ -221,21 +222,52 @@ namespace datos
 
                 finally
                 {
-                    AccesoDatos.ObtenerConexion().Close();
+                    AccesoDatos.CerrarConexion();
                 }
             }
             return valor;
 
         }
 
-        public void ActualizarProducto(producto entidad)
+        public producto ObtenerproductoPorId(int productoid)
         {
-            throw new NotImplementedException();
-        }
+            string query = "SELECT * FROM PRODUCTO WHERE ID_PRODUCTO =@IdProducto";
+            using (ComandoSQL = new SqlCommand())
+            {
+                ComandoSQL.CommandText = query;
+                ComandoSQL.Connection = AccesoDatos.ObtenerConexion();
+                ComandoSQL.CommandType = CommandType.Text;
+                ComandoSQL.Parameters.AddWithValue("@IdProducto", productoid);
+               
+                try
+                {
+                    producto p = new producto();
+                    using (var lector = ComandoSQL.ExecuteReader(CommandBehavior.CloseConnection))
+                    {
+                        if (lector.Read())
+                        {
+                            p = new producto {
+                                ID_PRODUCTO = lector.GetInt32(0),
+                                DESC_PRODUCTO = lector.GetString(1),
+                                ID_PROVEEDOR = lector.GetInt32(2),
+                                COSTO = (float)Convert.ToDouble(lector[3]),
+                                PRECIO = (float)Convert.ToDouble(lector[4]),
+                            };
+                        }
+                    }
+                    return p;
+                }
+                catch (Exception)
+                {
 
-        public DataTable Buscarproducto(string param, string opcion)
-        {
-            throw new NotImplementedException();
+                    throw;
+                }
+
+                finally
+                {
+                    AccesoDatos.CerrarConexion();
+                }
+            }
         }
     }
 }
