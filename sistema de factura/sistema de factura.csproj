@@ -97,6 +97,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vendedor\Form_BuscanVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vendedor\Form_BuscanVendedor.Designer.cs">
+      <DependentUpon>Form_BuscanVendedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vendedor\Form_MantenimientoVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vendedor\Form_MantenimientoVendedor.Designer.cs">
+      <DependentUpon>Form_MantenimientoVendedor.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Producto\Form_BuscarProducto.resx">
       <DependentUpon>Form_BuscarProducto.cs</DependentUpon>
     </EmbeddedResource>
@@ -131,6 +143,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Vendedor\Form_BuscanVendedor.resx">
+      <DependentUpon>Form_BuscanVendedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vendedor\Form_MantenimientoVendedor.resx">
+      <DependentUpon>Form_MantenimientoVendedor.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

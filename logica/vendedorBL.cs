@@ -40,5 +40,11 @@ namespace logica
             return Buscar.BuscarVendedores(parametro, opcion);
         
         }
+
+        public vendedor ObtenerVendedorPorId(int vendedorid)
+        {
+            vendedorDAL vendedorDAL = new vendedorDAL();
+            return vendedorDAL.ComprobarForanea(vendedorid);
+        }
     }
 }

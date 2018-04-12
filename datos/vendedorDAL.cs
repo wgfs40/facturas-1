@@ -40,9 +40,8 @@ namespace datos
         public void InsertarVendedores(vendedor vendedor)
         {
          
-            AccesoDatos.ObtenerConexion().Open();
-
-            string Query = "INSERT INTO VENDEDOR VALUES (@IdVendedor ,@NombVendedor," +
+           
+            string Query = "INSERT INTO VENDEDOR VALUES (@NombVendedor," +
                            "@Comision)"; 
 
 
@@ -53,8 +52,7 @@ namespace datos
                 ComandoSQL.CommandType = CommandType.Text;
 
                 try
-                {
-                    ComandoSQL.Parameters.AddWithValue("@IdVendedor", vendedor.ID_VENDEDOR);
+                {                    
                     ComandoSQL.Parameters.AddWithValue("@NombVendedor", vendedor.NOMB_VENDEDOR);
                     ComandoSQL.Parameters.AddWithValue("@Comision", vendedor.COMISION);
                    
@@ -68,7 +66,7 @@ namespace datos
 
                 finally
                 {
-                    AccesoDatos.ObtenerConexion().Close();
+                    AccesoDatos.CerrarConexion();
                 }
             }
 
@@ -76,8 +74,6 @@ namespace datos
 
         public void Eliminarvendedor(vendedor vendedor)
         {
-
-            AccesoDatos.ObtenerConexion().Open();
 
             string Query = "DELETE FROM VENDEDOR WHERE ID_VENDEDOR = @IdVendedor";
 
@@ -101,7 +97,7 @@ namespace datos
 
                 finally
                 {
-                    AccesoDatos.ObtenerConexion().Close();
+                    AccesoDatos.CerrarConexion();
                 }
             }
 
@@ -109,8 +105,7 @@ namespace datos
 
         public void Actualizarvendedor(vendedor vendedor)
         {
-           
-            AccesoDatos.ObtenerConexion().Open();
+                      
 
             string Query = "UPDATE VENDEDOR SET NOMB_VENDEDOR =@NombVendedor," +
                             "COMISION = @Comision," +
@@ -139,7 +134,7 @@ namespace datos
 
                 finally
                 {
-                    AccesoDatos.ObtenerConexion().Close();
+                        AccesoDatos.CerrarConexion();
                 }
             }
         }
@@ -147,28 +142,28 @@ namespace datos
         public DataTable BuscarVendedores(string parametro, string opcion)
         {
           
-            AccesoDatos.ObtenerConexion().Open();
             string Query = string.Empty;
 
-            if (opcion.Equals("@IdVendedor"))
-            {
-                Query = "SELECT * FROM VENDEDOR WHERE ID_VENDEDOR = @param";
-            }
-            else if (opcion.Equals("Nombre"))
-            {
-                Query = "SELECT * FROM VENDEDOR WHERE NOMB_VENDEDOR = @param";
-                
             
-            }
-          
            using (ComandoSQL = new SqlCommand())
             {
+                if (opcion.Equals("Id"))
+                {
+                    Query = "SELECT * FROM VENDEDOR WHERE ID_VENDEDOR = @param";
+                    ComandoSQL.Parameters.AddWithValue("@param",parametro);
+                }
+                else if (opcion.Equals("Nombre"))
+                {
+                    Query = "SELECT * FROM VENDEDOR WHERE NOMB_VENDEDOR LIKE @param";
+                    ComandoSQL.Parameters.AddWithValue("@param","%"+parametro+"%");
+                }
+
                 ComandoSQL.CommandText = Query;
                 ComandoSQL.CommandType = CommandType.Text;
                 ComandoSQL.Connection = AccesoDatos.ObtenerConexion();
                 try
                 {
-                    ComandoSQL.Parameters.AddWithValue("@param", parametro);
+                    
 
                     using (AdaptadorSQL = new SqlDataAdapter())
                     {
@@ -185,19 +180,18 @@ namespace datos
 
                 finally
                 {
-                    AccesoDatos.ObtenerConexion().Close();
+                    AccesoDatos.CerrarConexion();
                 }
 
                 return Dt;
             }
         }
 
-        public bool ComprobarForanea(int ID_VENDEDOR)
+        public vendedor ComprobarForanea(int ID_VENDEDOR)
         {
-            bool valor = false;
-            AccesoDatos.ObtenerConexion().Open();
+            vendedor v = new vendedor();           
 
-            string Query = "SELECT ID_VENDEDOR FROM VENDEDOR WHERE ID_VENDEDOR= @IdVendedor";
+            string Query = "SELECT ID_VENDEDOR,NOMB_VENDEDOR,COMISION FROM VENDEDOR WHERE ID_VENDEDOR= @IdVendedor";
 
 
             using (ComandoSQL = new SqlCommand())
@@ -210,8 +204,17 @@ namespace datos
                 {
                     ComandoSQL.Parameters.AddWithValue("@IdVendedor",ID_VENDEDOR);
 
-                    if (ComandoSQL.ExecuteScalar() != null)
-                        valor = true;
+                    using (var lector = ComandoSQL.ExecuteReader(CommandBehavior.CloseConnection))
+                    {
+                        if (lector.Read())
+                        {
+                            v.ID_VENDEDOR = lector.GetInt32(0);
+                            v.NOMB_VENDEDOR = lector.GetString(1);
+                            v.COMISION = (float)Convert.ToDouble(2);
+                        }
+
+                        return v;
+                    }
                 }
                 catch (Exception)
                 {
@@ -221,11 +224,9 @@ namespace datos
 
                 finally
                 {
-                    AccesoDatos.ObtenerConexion().Close();
+                        AccesoDatos.CerrarConexion();
                 }
             }
-            return valor;
-
         }
     }
 }
