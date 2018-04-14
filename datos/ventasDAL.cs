@@ -33,7 +33,6 @@ namespace datos
             using (AdaptadorSQL = new SqlDataAdapter(query, AccesoDatos.ObtenerConexion()))
             {
                 Dt = new DataTable();
-
                 AdaptadorSQL.Fill(Dt);
 
             }
