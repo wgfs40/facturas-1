@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel4 = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtComision = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel4 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -64,24 +64,56 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(171, 235);
+            this.toolStrip1.Size = new System.Drawing.Size(171, 249);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Image = global::sistema_de_factura.Properties.Resources.new_document16;
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(168, 45);
+            this.toolStripLabel1.Text = "Nuevo";
+            this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(168, 6);
             // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Image = global::sistema_de_factura.Properties.Resources._200_add;
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(168, 45);
+            this.toolStripLabel2.Text = "Agregar";
+            this.toolStripLabel2.Click += new System.EventHandler(this.toolStripLabel2_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(168, 6);
             // 
+            // toolStripLabel3
+            // 
+            this.toolStripLabel3.Image = global::sistema_de_factura.Properties.Resources.refresh16;
+            this.toolStripLabel3.Name = "toolStripLabel3";
+            this.toolStripLabel3.Size = new System.Drawing.Size(168, 45);
+            this.toolStripLabel3.Text = "Actualizar";
+            this.toolStripLabel3.Click += new System.EventHandler(this.toolStripLabel3_Click);
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(168, 6);
+            // 
+            // toolStripLabel4
+            // 
+            this.toolStripLabel4.Image = global::sistema_de_factura.Properties.Resources.delete_square161_h;
+            this.toolStripLabel4.Name = "toolStripLabel4";
+            this.toolStripLabel4.Size = new System.Drawing.Size(168, 45);
+            this.toolStripLabel4.Text = "Eliminar";
+            this.toolStripLabel4.Click += new System.EventHandler(this.toolStripLabel4_Click);
             // 
             // groupBox1
             // 
@@ -100,6 +132,16 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del vendedor";
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Image = global::sistema_de_factura.Properties.Resources.xmag;
+            this.btnBuscar.Location = new System.Drawing.Point(415, 31);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 41);
+            this.btnBuscar.TabIndex = 6;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // label3
             // 
@@ -150,51 +192,11 @@
             this.txtCodigo.Size = new System.Drawing.Size(177, 32);
             this.txtCodigo.TabIndex = 0;
             // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Image = global::sistema_de_factura.Properties.Resources.xmag;
-            this.btnBuscar.Location = new System.Drawing.Point(415, 31);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 41);
-            this.btnBuscar.TabIndex = 6;
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Image = global::sistema_de_factura.Properties.Resources.new_document16;
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(168, 45);
-            this.toolStripLabel1.Text = "Nuevo";
-            this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
-            // 
-            // toolStripLabel2
-            // 
-            this.toolStripLabel2.Image = global::sistema_de_factura.Properties.Resources._200_add;
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(168, 45);
-            this.toolStripLabel2.Text = "Agregar";
-            this.toolStripLabel2.Click += new System.EventHandler(this.toolStripLabel2_Click);
-            // 
-            // toolStripLabel3
-            // 
-            this.toolStripLabel3.Image = global::sistema_de_factura.Properties.Resources.refresh16;
-            this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(168, 45);
-            this.toolStripLabel3.Text = "Actualizar";
-            // 
-            // toolStripLabel4
-            // 
-            this.toolStripLabel4.Image = global::sistema_de_factura.Properties.Resources.delete_square161_h;
-            this.toolStripLabel4.Name = "toolStripLabel4";
-            this.toolStripLabel4.Size = new System.Drawing.Size(168, 45);
-            this.toolStripLabel4.Text = "Eliminar";
-            // 
             // Form_MantenimientoVendedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 235);
+            this.ClientSize = new System.Drawing.Size(834, 249);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "Form_MantenimientoVendedor";

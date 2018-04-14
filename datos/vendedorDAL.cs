@@ -108,7 +108,7 @@ namespace datos
                       
 
             string Query = "UPDATE VENDEDOR SET NOMB_VENDEDOR =@NombVendedor," +
-                            "COMISION = @Comision," +
+                            "COMISION = @Comision " +
                             "WHERE ID_VENDEDOR = @IdVendedor";
 
 
@@ -126,7 +126,7 @@ namespace datos
 
                     ComandoSQL.ExecuteNonQuery();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
                     throw;
