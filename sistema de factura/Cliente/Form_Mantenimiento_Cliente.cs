@@ -55,7 +55,7 @@ namespace sistema_de_factura
                 return;
             }
 
-            //if (string.IsNullOrEmpty(txtDireccion.Text))
+            if (string.IsNullOrEmpty(txtDireccion.Text))
             {
                 MessageBox.Show("la direccion es un campo obligatorio");
                 txtDireccion.Focus();
