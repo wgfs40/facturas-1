@@ -72,9 +72,6 @@ namespace sistema_de_factura.Vendedor
                 toolStripLabel1_Click(null, null);
                 return;
             }
-
-           
-
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)

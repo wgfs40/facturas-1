@@ -45,5 +45,11 @@ namespace logica
 
             return Buscar.Buscarproveedor(param, option);
         }
+
+        public proveedor ObtenerProveedorPorId(int proveedorid)
+        {
+            proveedorDAL proveedor = new proveedorDAL();
+            return proveedor.BuscarProveedorPorId(proveedorid);
+        }
     }
 }

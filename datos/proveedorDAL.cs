@@ -27,7 +27,7 @@ namespace datos
 
         public DataTable Obtenerproveedor()
         {
-            string query = "Select ID_PROVEEDOR,NOMB_PROVEEDOR,DIRECCIOM,PAIS From PROVEEDOR";
+            string query = "Select ID_PROVEEDOR,NOMB_PROVEEDOR,DIRECCION,PAIS From PROVEEDOR";
             using (AdaptadorSQL = new SqlDataAdapter(query, AccesoDatos.ObtenerConexion()))
             {
                 Dt = new DataTable();
@@ -40,8 +40,8 @@ namespace datos
 
         public void Insertarproveedor(proveedor proveedor)
         {
-            AccesoDatos.ObtenerConexion().Open();
-            string Query = "INSERT INTO PROVEEDOR VALUES(@IdProveedor,@NombProveedor,@Direcciom,@Pais)";
+           
+            string Query = "INSERT INTO PROVEEDOR VALUES(@NombProveedor,@Direcciom,@Pais)";
 
             using (ComandoSQL = new SqlCommand())
             {
@@ -50,9 +50,9 @@ namespace datos
                 ComandoSQL.CommandText = Query;
                 try
                 {
-                    ComandoSQL.Parameters.AddWithValue("@IdProveedor", proveedor.ID_PROVEEDOR);
+                   
                     ComandoSQL.Parameters.AddWithValue("@NombProveedor", proveedor.NOMB_PROVEEDOR);
-                    ComandoSQL.Parameters.AddWithValue("@Direcciom", proveedor.DIRECCIOM);
+                    ComandoSQL.Parameters.AddWithValue("@Direcciom", proveedor.DIRECCION);
                     ComandoSQL.Parameters.AddWithValue("@PAIS", proveedor.PAIS);
                
 
@@ -67,7 +67,7 @@ namespace datos
                 }
                 finally
                 {
-                    AccesoDatos.ObtenerConexion().Close();
+                    AccesoDatos.CerrarConexion();
                 }
             }
 
@@ -76,10 +76,9 @@ namespace datos
         public void Actualizarproveedor(proveedor proveedor)
         {
 
-            AccesoDatos.ObtenerConexion().Open();
-
+            
             string Query = "UPDATE PROVEEDOR SET NOMB_PROVEEDOR= @NombProveedor," +
-                            "DIRECCIOM = @Direcciom," +
+                            "DIRECCION = @Direcciom," +
                             "PAIS= @Pais " +
                             "WHERE ID_PROVEEDOR =@IdProveedor";
 
@@ -94,7 +93,7 @@ namespace datos
                 {
                     ComandoSQL.Parameters.AddWithValue("@IdProveedor", proveedor.ID_PROVEEDOR);
                     ComandoSQL.Parameters.AddWithValue("@NombProveedor", proveedor.NOMB_PROVEEDOR);
-                    ComandoSQL.Parameters.AddWithValue("@Direcciom", proveedor.DIRECCIOM);
+                    ComandoSQL.Parameters.AddWithValue("@Direcciom", proveedor.DIRECCION);
                     ComandoSQL.Parameters.AddWithValue("@PAIS", proveedor.PAIS);
 
                     ComandoSQL.ExecuteNonQuery();
@@ -107,7 +106,7 @@ namespace datos
 
                 finally
                 {
-                    AccesoDatos.ObtenerConexion().Close();
+                    AccesoDatos.CerrarConexion();
                 }
             }
         }
@@ -115,8 +114,7 @@ namespace datos
         public void EliminarPROVEEDOR(proveedor proveedor)
         {
 
-            AccesoDatos.ObtenerConexion().Open();
-
+           
             string Query = "DELETE FROM PROVEEDOR WHERE ID_PROVEEDOR = @IdProveedor";
 
 
@@ -139,7 +137,7 @@ namespace datos
 
                 finally
                 {
-                    AccesoDatos.ObtenerConexion().Close();
+                    AccesoDatos.CerrarConexion();
                 }
             }
 
@@ -156,7 +154,7 @@ namespace datos
             {
                 query = "SELECT * FROM  PROVEEDOR WHERE PAIS LIKE @IdProveedor";
             }
-            AccesoDatos.ObtenerConexion().Open();
+           
             using (ComandoSQL = new SqlCommand())
             {
                 ComandoSQL.CommandText = query;
@@ -180,11 +178,52 @@ namespace datos
                 finally
                 {
 
-                    AccesoDatos.ObtenerConexion().Close();
+                    AccesoDatos.CerrarConexion();
                 }
             }
             return Dt;
 
+        }
+
+        public proveedor BuscarProveedorPorId(int codigo)
+        {
+            string query = string.Empty;
+        
+            query = "SELECT * FROM  PROVEEDOR WHERE ID_PROVEEDOR = @IdProveedor";
+       
+            using (ComandoSQL = new SqlCommand())
+            {
+                ComandoSQL.CommandText = query;
+                ComandoSQL.Connection = AccesoDatos.ObtenerConexion();
+                ComandoSQL.Parameters.AddWithValue("@IdProveedor", codigo);
+
+                proveedor p = new proveedor();
+                try
+                {
+                    using (var lector = ComandoSQL.ExecuteReader(CommandBehavior.CloseConnection))
+                    {
+                        if (lector.Read())
+                        {
+                            p.ID_PROVEEDOR = lector.GetInt32(0);
+                            p.NOMB_PROVEEDOR = lector.GetString(1);                           
+                            p.DIRECCION = lector.GetString(2);
+                            p.PAIS = lector.GetString(3);
+                        }
+                    }
+
+                    return p;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+
+                    AccesoDatos.CerrarConexion();
+                }
+            }
+           
         }
     }
 }

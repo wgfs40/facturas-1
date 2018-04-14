@@ -1,5 +1,6 @@
 ﻿using logica;
 using sistema_de_factura.Producto;
+using sistema_de_factura.Proveedor;
 using sistema_de_factura.Vendedor;
 using System;
 using System.Collections.Generic;
@@ -77,6 +78,13 @@ namespace sistema_de_factura
             Form_MantenimientoVendedor vendedorform = new Form_MantenimientoVendedor();
             vendedorform.MdiParent = this;
             vendedorform.Show();
+        }
+
+        private void mantenimientoProveedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_MantenimientoProveedores mantenimientoProveedores = new Form_MantenimientoProveedores();
+            mantenimientoProveedores.MdiParent = this;
+            mantenimientoProveedores.Show();
         }
     }
 }
