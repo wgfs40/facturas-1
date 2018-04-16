@@ -40,7 +40,12 @@ namespace datos
 
         public void Insertarproveedor(proveedor proveedor)
         {
-           
+            //verificamos si hay una transaccion
+            if (AccesoDatos.Transaction != null)
+            {
+                ComandoSQL.Transaction = AccesoDatos.Transaction;
+            }
+
             string Query = "INSERT INTO PROVEEDOR VALUES(@NombProveedor,@Direcciom,@Pais)";
 
             using (ComandoSQL = new SqlCommand())
@@ -62,6 +67,12 @@ namespace datos
                 }
                 catch (Exception)
                 {
+                    //verificamos si hay una transaccion
+                    if (AccesoDatos.Transaction != null)
+                    {
+                        AccesoDatos.DevolverTransaccion();
+                    }
+
                     throw;
 
                 }
@@ -75,8 +86,12 @@ namespace datos
 
         public void Actualizarproveedor(proveedor proveedor)
         {
+            //verificamos si hay una transaccion
+            if (AccesoDatos.Transaction != null)
+            {
+                ComandoSQL.Transaction = AccesoDatos.Transaction;
+            }
 
-            
             string Query = "UPDATE PROVEEDOR SET NOMB_PROVEEDOR= @NombProveedor," +
                             "DIRECCION = @Direcciom," +
                             "PAIS= @Pais " +
@@ -100,7 +115,11 @@ namespace datos
                 }
                 catch (Exception)
                 {
-
+                    //verificamos si hay una transaccion
+                    if (AccesoDatos.Transaction != null)
+                    {
+                        AccesoDatos.DevolverTransaccion();
+                    }
                     throw;
                 }
 
@@ -113,8 +132,12 @@ namespace datos
 
         public void EliminarPROVEEDOR(proveedor proveedor)
         {
+            //verificamos si hay una transaccion
+            if (AccesoDatos.Transaction != null)
+            {
+                ComandoSQL.Transaction = AccesoDatos.Transaction;
+            }
 
-           
             string Query = "DELETE FROM PROVEEDOR WHERE ID_PROVEEDOR = @IdProveedor";
 
 
@@ -131,7 +154,11 @@ namespace datos
                 }
                 catch (Exception)
                 {
-
+                    //verificamos si hay una transaccion
+                    if (AccesoDatos.Transaction != null)
+                    {
+                        AccesoDatos.DevolverTransaccion();
+                    }
                     throw;
                 }
 

@@ -42,6 +42,12 @@ namespace datos
         {           
             using (ComandoSQL = new SqlCommand())
             {
+                //verificamos si hay una transaccion
+                if (AccesoDatos.Transaction != null)
+                {
+                    ComandoSQL.Transaction = AccesoDatos.Transaction;
+                }
+
                 ComandoSQL.Connection = AccesoDatos.ObtenerConexion();
                 ComandoSQL.CommandType = CommandType.StoredProcedure;
                 ComandoSQL.CommandText = "proc_CLIENTEInsert";
@@ -59,11 +65,16 @@ namespace datos
                 }
                 catch (Exception)
                 {
-                    throw;
+                    if (AccesoDatos.Transaction != null)
+                    {
+                        AccesoDatos.DevolverTransaccion();
+                    }
 
+                    throw;
                 }
                 finally
                 {
+                    
                     AccesoDatos.CerrarConexion();
                 }
             }
@@ -75,6 +86,12 @@ namespace datos
            
             using (ComandoSQL = new SqlCommand())
             {
+                //verificamos si hay una transaccion
+                if (AccesoDatos.Transaction != null)
+                {
+                    ComandoSQL.Transaction = AccesoDatos.Transaction;
+                }
+
                 ComandoSQL.Connection = AccesoDatos.ObtenerConexion();
                 ComandoSQL.CommandType = CommandType.Text;
                 ComandoSQL.CommandText = "DELETE FROM CLIENTE WHERE ID_CLIENTE = @IdCliente";
@@ -88,6 +105,11 @@ namespace datos
                 }
                 catch (Exception)
                 {
+                    //verificamos si hay una transaccion
+                    if (AccesoDatos.Transaction != null)
+                    {
+                        AccesoDatos.DevolverTransaccion();
+                    }
                     throw;
 
                 }
@@ -109,6 +131,12 @@ namespace datos
 
             using (ComandoSQL = new SqlCommand())
             {
+                //verificamos si hay una transaccion
+                if (AccesoDatos.Transaction != null)
+                {
+                    ComandoSQL.Transaction = AccesoDatos.Transaction;
+                }
+
                 ComandoSQL.Connection = AccesoDatos.ObtenerConexion();
                 ComandoSQL.CommandType = CommandType.Text;
                 ComandoSQL.CommandText = query;
@@ -126,6 +154,12 @@ namespace datos
                 }
                 catch (Exception)
                 {
+                    //verificamos si hay una transaccion
+                    if (AccesoDatos.Transaction != null)
+                    {
+                        AccesoDatos.DevolverTransaccion();
+                    }
+
                     throw;
 
                 }

@@ -10,6 +10,12 @@ namespace logica
 {
    public class facturaBL
     {
+        private acceso AccesoDatos;
+
+        public facturaBL()
+        {
+            AccesoDatos = new acceso();
+        }
 
         public DataTable ObtenerVentas()
         {
@@ -19,7 +25,9 @@ namespace logica
 
         public void Insertarfactura(factura entidad)
         {
-            facturaDAL Insertar = new facturaDAL();
+            AccesoDatos.IniciarTransaction();
+
+            facturaDAL Insertar = new facturaDAL(AccesoDatos);           
             Insertar.Insertarfactura(entidad);
         }
 

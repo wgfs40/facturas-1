@@ -136,14 +136,12 @@ namespace sistema_de_factura
             }
         }
 
-        public void Limpiar(params TextBox[] text)
+        private void Limpiar(params TextBox[] text)
         {
             for (int i = 0; i < text.Length; i++)
             {
                 text[i].Clear();
             }
-
-            clienteid = 0;
 
         }
 

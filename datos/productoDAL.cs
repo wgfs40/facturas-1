@@ -42,7 +42,11 @@ namespace datos
 
         public void InsertarProducto(producto producto)
         {
-           
+            //verificamos si hay una transaccion
+            if (AccesoDatos.Transaction != null)
+            {
+                ComandoSQL.Transaction = AccesoDatos.Transaction;
+            }
             string Query = "INSERT INTO PRODUCTO VALUES(@DescProducto,@IdProveedor,@Costo,@Precio)";
 
             using (ComandoSQL = new SqlCommand())
@@ -63,6 +67,11 @@ namespace datos
                 }
                 catch (Exception)
                 {
+                    //verificamos si hay una transaccion
+                    if (AccesoDatos.Transaction != null)
+                    {
+                        AccesoDatos.DevolverTransaccion();
+                    }
                     throw;
 
                 }
@@ -77,7 +86,11 @@ namespace datos
         public void Actualizarproducto(producto producto)
         {
 
-           
+            //verificamos si hay una transaccion
+            if (AccesoDatos.Transaction != null)
+            {
+                ComandoSQL.Transaction = AccesoDatos.Transaction;
+            }
 
             string Query = "UPDATE PRODUCTO SET DESC_PRODUCTO =@DescProducto," +
                             "ID_PROVEEDOR = @IdProveedor," +
@@ -104,7 +117,11 @@ namespace datos
                 }
                 catch (Exception)
                 {
-
+                    //verificamos si hay una transaccion
+                    if (AccesoDatos.Transaction != null)
+                    {
+                        AccesoDatos.DevolverTransaccion();
+                    }
                     throw;
                 }
 
@@ -116,7 +133,12 @@ namespace datos
         }
 
         public void Eliminarproducto (producto productos)
-        {           
+        {
+            //verificamos si hay una transaccion
+            if (AccesoDatos.Transaction != null)
+            {
+                ComandoSQL.Transaction = AccesoDatos.Transaction;
+            }
 
             string Query = "DELETE FROM PRODUCTO WHERE ID_PRODUCTO =@IdProducto";
 
@@ -134,6 +156,11 @@ namespace datos
                 }
                 catch (Exception)
                 {
+                    //verificamos si hay una transaccion
+                    if (AccesoDatos.Transaction != null)
+                    {
+                        AccesoDatos.DevolverTransaccion();
+                    }
 
                     throw;
                 }

@@ -13,5 +13,12 @@ namespace Entidades
         public int ID_VENDEDOR { get; set; }
         public float SALDOINICIAL { get; set; }
         public float SALDOFINAL { get; set; }
+
+        public List<facturadetalle> FACTURADETALLE { get; set; }
+
+        public factura()
+        {
+            FACTURADETALLE = new List<facturadetalle>();
+        }
     }
 }
