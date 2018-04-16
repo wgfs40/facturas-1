@@ -150,5 +150,35 @@ namespace sistema_de_factura.Factura
             facturaBL.Insertarfactura(fact);
 
         }
+
+       
+        private void DataGridViewDetalleFactura_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            switch (DataGridViewDetalleFactura.CurrentCell.ColumnIndex)
+            {
+                case 2:
+                    DataGridViewDetalleFactura.BeginEdit(true);
+                    break;
+                default:
+                    DataGridViewDetalleFactura.CurrentCell.ReadOnly = true;
+                    break;
+            }
+
+           
+        }
+
+        private void DataGridViewDetalleFactura_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            switch (DataGridViewDetalleFactura.CurrentCell.ColumnIndex)
+            {               
+                case 4:
+                    DataGridViewDetalleFactura.Rows.RemoveAt(e.RowIndex);
+                    //MessageBox.Show((e.RowIndex + 1) + "  Row  " + (e.ColumnIndex + 1) + "  Column button clicked ");
+                    break;
+                default:
+                    DataGridViewDetalleFactura.CurrentCell.ReadOnly = true;
+                    break;
+            }
+        }
     }
 }

@@ -56,11 +56,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.DataGridViewDetalleFactura = new System.Windows.Forms.DataGridView();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.ColumnCodProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnNombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnGuardar = new System.Windows.Forms.Button();
+            this.ColumnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -322,7 +323,7 @@
             this.groupBox3.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(720, 16);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(613, 515);
+            this.groupBox3.Size = new System.Drawing.Size(760, 515);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Detalle Factura";
@@ -336,15 +337,28 @@
             this.ColumnCodProducto,
             this.ColumnNombreProducto,
             this.ColumnCantidad,
-            this.ColumnPrecio});
+            this.ColumnPrecio,
+            this.ColumnDelete});
             this.DataGridViewDetalleFactura.Location = new System.Drawing.Point(6, 31);
             this.DataGridViewDetalleFactura.MultiSelect = false;
             this.DataGridViewDetalleFactura.Name = "DataGridViewDetalleFactura";
             this.DataGridViewDetalleFactura.RowHeadersVisible = false;
             this.DataGridViewDetalleFactura.RowTemplate.Height = 24;
             this.DataGridViewDetalleFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewDetalleFactura.Size = new System.Drawing.Size(601, 471);
+            this.DataGridViewDetalleFactura.Size = new System.Drawing.Size(731, 471);
             this.DataGridViewDetalleFactura.TabIndex = 0;
+            this.DataGridViewDetalleFactura.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewDetalleFactura_CellClick);
+            this.DataGridViewDetalleFactura.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewDetalleFactura_CellEnter);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Location = new System.Drawing.Point(12, 537);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(110, 47);
+            this.btnGuardar.TabIndex = 0;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // ColumnCodProducto
             // 
@@ -370,21 +384,19 @@
             this.ColumnPrecio.HeaderText = "Precio";
             this.ColumnPrecio.Name = "ColumnPrecio";
             // 
-            // btnGuardar
+            // ColumnDelete
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(12, 537);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(110, 47);
-            this.btnGuardar.TabIndex = 0;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            this.ColumnDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnDelete.HeaderText = "Accion";
+            this.ColumnDelete.Name = "ColumnDelete";
+            this.ColumnDelete.Text = "Eliminar";
+            this.ColumnDelete.UseColumnTextForButtonValue = true;
             // 
             // Form_MantenimientoFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1345, 604);
+            this.ClientSize = new System.Drawing.Size(1526, 604);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -436,5 +448,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNombreProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrecio;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnDelete;
     }
 }
