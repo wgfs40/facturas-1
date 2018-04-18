@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtCodProveedor = new System.Windows.Forms.TextBox();
+            this.txtCodVendedor = new System.Windows.Forms.TextBox();
             this.txtCodCliente = new System.Windows.Forms.TextBox();
             this.txtSaldoFinal = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtSaldoInicial = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnBuscarProveedor = new System.Windows.Forms.Button();
-            this.txtProveedorNombre = new System.Windows.Forms.TextBox();
+            this.btnBuscarVendedor = new System.Windows.Forms.Button();
+            this.txtVendedorNombre = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnBuscarCliente = new System.Windows.Forms.Button();
             this.txtClienteNombre = new System.Windows.Forms.TextBox();
@@ -56,12 +56,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.DataGridViewDetalleFactura = new System.Windows.Forms.DataGridView();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.ColumnCodProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnNombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnBuscarFactura = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -70,14 +71,15 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtCodProveedor);
+            this.groupBox1.Controls.Add(this.btnBuscarFactura);
+            this.groupBox1.Controls.Add(this.txtCodVendedor);
             this.groupBox1.Controls.Add(this.txtCodCliente);
             this.groupBox1.Controls.Add(this.txtSaldoFinal);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtSaldoInicial);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.btnBuscarProveedor);
-            this.groupBox1.Controls.Add(this.txtProveedorNombre);
+            this.groupBox1.Controls.Add(this.btnBuscarVendedor);
+            this.groupBox1.Controls.Add(this.txtVendedorNombre);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.btnBuscarCliente);
             this.groupBox1.Controls.Add(this.txtClienteNombre);
@@ -92,12 +94,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de la Factura";
             // 
-            // txtCodProveedor
+            // txtCodVendedor
             // 
-            this.txtCodProveedor.Location = new System.Drawing.Point(190, 110);
-            this.txtCodProveedor.Name = "txtCodProveedor";
-            this.txtCodProveedor.Size = new System.Drawing.Size(133, 32);
-            this.txtCodProveedor.TabIndex = 2;
+            this.txtCodVendedor.Location = new System.Drawing.Point(190, 110);
+            this.txtCodVendedor.Name = "txtCodVendedor";
+            this.txtCodVendedor.Size = new System.Drawing.Size(133, 32);
+            this.txtCodVendedor.TabIndex = 2;
             // 
             // txtCodCliente
             // 
@@ -138,33 +140,33 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Saldo Inicial:";
             // 
-            // btnBuscarProveedor
+            // btnBuscarVendedor
             // 
-            this.btnBuscarProveedor.Location = new System.Drawing.Point(619, 110);
-            this.btnBuscarProveedor.Name = "btnBuscarProveedor";
-            this.btnBuscarProveedor.Size = new System.Drawing.Size(75, 32);
-            this.btnBuscarProveedor.TabIndex = 3;
-            this.btnBuscarProveedor.Text = "...";
-            this.btnBuscarProveedor.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBuscarProveedor.UseVisualStyleBackColor = true;
-            this.btnBuscarProveedor.Click += new System.EventHandler(this.btnBuscarProveedor_Click);
+            this.btnBuscarVendedor.Location = new System.Drawing.Point(619, 110);
+            this.btnBuscarVendedor.Name = "btnBuscarVendedor";
+            this.btnBuscarVendedor.Size = new System.Drawing.Size(75, 32);
+            this.btnBuscarVendedor.TabIndex = 3;
+            this.btnBuscarVendedor.Text = "...";
+            this.btnBuscarVendedor.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBuscarVendedor.UseVisualStyleBackColor = true;
+            this.btnBuscarVendedor.Click += new System.EventHandler(this.btnBuscarProveedor_Click);
             // 
-            // txtProveedorNombre
+            // txtVendedorNombre
             // 
-            this.txtProveedorNombre.Location = new System.Drawing.Point(329, 110);
-            this.txtProveedorNombre.Name = "txtProveedorNombre";
-            this.txtProveedorNombre.ReadOnly = true;
-            this.txtProveedorNombre.Size = new System.Drawing.Size(284, 32);
-            this.txtProveedorNombre.TabIndex = 8;
+            this.txtVendedorNombre.Location = new System.Drawing.Point(329, 110);
+            this.txtVendedorNombre.Name = "txtVendedorNombre";
+            this.txtVendedorNombre.ReadOnly = true;
+            this.txtVendedorNombre.Size = new System.Drawing.Size(284, 32);
+            this.txtVendedorNombre.TabIndex = 8;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(77, 113);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 24);
+            this.label3.Size = new System.Drawing.Size(102, 24);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Proveedor:";
+            this.label3.Text = "Vendedor:";
             // 
             // btnBuscarCliente
             // 
@@ -350,16 +352,6 @@
             this.DataGridViewDetalleFactura.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewDetalleFactura_CellClick);
             this.DataGridViewDetalleFactura.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewDetalleFactura_CellEnter);
             // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Location = new System.Drawing.Point(12, 537);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(110, 47);
-            this.btnGuardar.TabIndex = 0;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
             // ColumnCodProducto
             // 
             this.ColumnCodProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -392,6 +384,26 @@
             this.ColumnDelete.Text = "Eliminar";
             this.ColumnDelete.UseColumnTextForButtonValue = true;
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Location = new System.Drawing.Point(12, 537);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(110, 47);
+            this.btnGuardar.TabIndex = 0;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnBuscarFactura
+            // 
+            this.btnBuscarFactura.Location = new System.Drawing.Point(412, 34);
+            this.btnBuscarFactura.Name = "btnBuscarFactura";
+            this.btnBuscarFactura.Size = new System.Drawing.Size(75, 32);
+            this.btnBuscarFactura.TabIndex = 11;
+            this.btnBuscarFactura.Text = "...";
+            this.btnBuscarFactura.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBuscarFactura.UseVisualStyleBackColor = true;
+            // 
             // Form_MantenimientoFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -421,14 +433,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtCodFactura;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnBuscarProveedor;
-        private System.Windows.Forms.TextBox txtProveedorNombre;
+        private System.Windows.Forms.Button btnBuscarVendedor;
+        private System.Windows.Forms.TextBox txtVendedorNombre;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtSaldoFinal;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtSaldoInicial;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtCodProveedor;
+        private System.Windows.Forms.TextBox txtCodVendedor;
         private System.Windows.Forms.TextBox txtCodCliente;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtNombreProducto;
@@ -449,5 +461,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrecio;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnDelete;
+        private System.Windows.Forms.Button btnBuscarFactura;
     }
 }

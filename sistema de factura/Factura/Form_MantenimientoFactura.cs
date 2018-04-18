@@ -1,6 +1,7 @@
 ﻿using Entidades;
 using logica;
 using sistema_de_factura.Proveedor;
+using sistema_de_factura.Vendedor;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,12 +46,12 @@ namespace sistema_de_factura.Factura
 
         private void btnBuscarProveedor_Click(object sender, EventArgs e)
         {
-            Form_BuscarProveedor buscarProveedor = new Form_BuscarProveedor();
-            if (buscarProveedor.ShowDialog() == DialogResult.OK)
+            Form_BuscanVendedor buscanVendedor = new Form_BuscanVendedor();
+            if (buscanVendedor.ShowDialog() == DialogResult.OK)
             {
-                var proveedor = buscarProveedor.Proveedor;
-                txtCodProveedor.Text = proveedor.ID_PROVEEDOR.ToString();
-                txtProveedorNombre.Text = proveedor.NOMB_PROVEEDOR;
+                var v = buscanVendedor.Vendedor;
+                txtCodVendedor.Text = v.ID_VENDEDOR.ToString();
+                txtVendedorNombre.Text = v.NOMB_VENDEDOR;
             }
         }
 

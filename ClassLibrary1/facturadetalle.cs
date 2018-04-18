@@ -7,5 +7,9 @@
         public int FACTURAID { get; set; }
         public int CANTIDAD { get; set; }
         public float PRECIO { get; set; }
+        public EstadoEntidad EstadoDetalle { get; set; }
+        public producto Producto { get; set; }
+
+        public facturadetalle() => EstadoDetalle = EstadoEntidad.Sin_Cambio;
     }
 }

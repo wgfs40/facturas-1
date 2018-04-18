@@ -11,10 +11,12 @@ namespace logica
    public class facturaBL
     {
         private acceso AccesoDatos;
+        private productoBL productoBL;
 
         public facturaBL()
         {
             AccesoDatos = new acceso();
+            productoBL = new productoBL();
         }
 
         public DataTable ObtenerVentas()
