@@ -41,6 +41,34 @@ namespace datos
             }
             return Dt;
         }
+
+        public DataTable ObtenerVentas(int facturaid)
+        {
+            string query = "Select * From  factura where ID_FACTURAS = @facturaid";
+            using (AdaptadorSQL = new SqlDataAdapter(query, AccesoDatos.ObtenerConexion()))
+            {
+                AdaptadorSQL.SelectCommand.Parameters.AddWithValue("@facturaid",facturaid);
+                Dt = new DataTable();
+
+                AdaptadorSQL.Fill(Dt);
+
+            }
+            return Dt;
+        }
+
+        public DataTable ObtenerDetalleFactura(int facturaid)
+        {
+            string query = "Select * From  FACTURADETALLE where facturaid = @facturaid";
+            using (AdaptadorSQL = new SqlDataAdapter(query, AccesoDatos.ObtenerConexion()))
+            {
+                AdaptadorSQL.SelectCommand.Parameters.AddWithValue("@facturaid", facturaid);
+                Dt = new DataTable();
+
+                AdaptadorSQL.Fill(Dt);
+
+            }
+            return Dt;
+        }
         public void Insertarfactura(factura factura)
         {
            

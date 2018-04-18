@@ -19,9 +19,13 @@ namespace logica
             productoBL = new productoBL();
         }
 
-        public DataTable ObtenerVentas()
+        public DataTable ObtenerVentas(int? facturaid)
         {
             facturaDAL Obtener = new facturaDAL();
+            if (facturaid != null)
+            {
+                return Obtener.ObtenerVentas(facturaid.Value);
+            }
             return Obtener.ObtenerVentas();
         }
 
@@ -52,9 +56,15 @@ namespace logica
             return Buscar.Buscarfactura(param, opcion);
         }
 
-        public DataTable ObtenerfacturaClientes()
+        public DataTable ObtenerfacturaClientes(int? facturaid)
         {
+
             return new facturaDAL().ObtenerfacturaCliente();
+        }
+
+        public DataTable ObtenerDetalleFactura(int facturaid)
+        {
+            return new facturaDAL().ObtenerDetalleFactura(facturaid);
         }
 
     }

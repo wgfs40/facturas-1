@@ -40,11 +40,13 @@
             this.mantenimientoDeVendedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoProveedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mantenimientoFacturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.stripstatusUsuario = new System.Windows.Forms.ToolStripStatusLabel();
-            this.facturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mantenimientoFacturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -58,7 +60,8 @@
             this.productoToolStripMenuItem,
             this.vendedoresToolStripMenuItem,
             this.proveedorToolStripMenuItem,
-            this.facturaToolStripMenuItem});
+            this.facturaToolStripMenuItem,
+            this.reporteToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 28);
@@ -148,6 +151,21 @@
             this.mantenimientoProveedorToolStripMenuItem.Text = "Mantenimiento Proveedor";
             this.mantenimientoProveedorToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoProveedorToolStripMenuItem_Click);
             // 
+            // facturaToolStripMenuItem
+            // 
+            this.facturaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mantenimientoFacturaToolStripMenuItem});
+            this.facturaToolStripMenuItem.Name = "facturaToolStripMenuItem";
+            this.facturaToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
+            this.facturaToolStripMenuItem.Text = "Factura";
+            // 
+            // mantenimientoFacturaToolStripMenuItem
+            // 
+            this.mantenimientoFacturaToolStripMenuItem.Name = "mantenimientoFacturaToolStripMenuItem";
+            this.mantenimientoFacturaToolStripMenuItem.Size = new System.Drawing.Size(236, 26);
+            this.mantenimientoFacturaToolStripMenuItem.Text = "Mantenimiento Factura";
+            this.mantenimientoFacturaToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoFacturaToolStripMenuItem_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -172,20 +190,20 @@
             this.stripstatusUsuario.Size = new System.Drawing.Size(67, 20);
             this.stripstatusUsuario.Text = "[usuario]";
             // 
-            // facturaToolStripMenuItem
+            // reporteToolStripMenuItem
             // 
-            this.facturaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mantenimientoFacturaToolStripMenuItem});
-            this.facturaToolStripMenuItem.Name = "facturaToolStripMenuItem";
-            this.facturaToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
-            this.facturaToolStripMenuItem.Text = "Factura";
+            this.reporteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reporteToolStripMenuItem1});
+            this.reporteToolStripMenuItem.Name = "reporteToolStripMenuItem";
+            this.reporteToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
+            this.reporteToolStripMenuItem.Text = "Reporte";
             // 
-            // mantenimientoFacturaToolStripMenuItem
+            // reporteToolStripMenuItem1
             // 
-            this.mantenimientoFacturaToolStripMenuItem.Name = "mantenimientoFacturaToolStripMenuItem";
-            this.mantenimientoFacturaToolStripMenuItem.Size = new System.Drawing.Size(236, 26);
-            this.mantenimientoFacturaToolStripMenuItem.Text = "Mantenimiento Factura";
-            this.mantenimientoFacturaToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoFacturaToolStripMenuItem_Click);
+            this.reporteToolStripMenuItem1.Name = "reporteToolStripMenuItem1";
+            this.reporteToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
+            this.reporteToolStripMenuItem1.Text = "Reporte";
+            this.reporteToolStripMenuItem1.Click += new System.EventHandler(this.reporteToolStripMenuItem1_Click);
             // 
             // Form_menu
             // 
@@ -229,5 +247,7 @@
         private System.Windows.Forms.ToolStripMenuItem mantenimientoProveedorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem facturaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mantenimientoFacturaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteToolStripMenuItem1;
     }
 }

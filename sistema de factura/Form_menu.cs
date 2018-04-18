@@ -2,6 +2,7 @@
 using sistema_de_factura.Factura;
 using sistema_de_factura.Producto;
 using sistema_de_factura.Proveedor;
+using sistema_de_factura.Reportes;
 using sistema_de_factura.Vendedor;
 using System;
 using System.Collections.Generic;
@@ -93,6 +94,12 @@ namespace sistema_de_factura
             Form_MantenimientoFactura factura = new Form_MantenimientoFactura();
             factura.MdiParent = this;
             factura.Show();
+        }
+
+        private void reporteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form_Reporte form_Reporte = new Form_Reporte();
+            form_Reporte.Show();
         }
     }
 }

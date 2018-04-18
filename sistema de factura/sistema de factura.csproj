@@ -141,6 +141,11 @@
     <Compile Include="Reportes\Form_Reporte.Designer.cs">
       <DependentUpon>Form_Reporte.cs</DependentUpon>
     </Compile>
+    <Compile Include="SISTEMAFACTURASDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SISTEMAFACTURASDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Vendedor\Form_BuscanVendedor.cs">
       <SubType>Form</SubType>
@@ -218,6 +223,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SISTEMAFACTURASDataSet.xsc">
+      <DependentUpon>SISTEMAFACTURASDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SISTEMAFACTURASDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SISTEMAFACTURASDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SISTEMAFACTURASDataSet.xss">
+      <DependentUpon>SISTEMAFACTURASDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary1\entidades.csproj">

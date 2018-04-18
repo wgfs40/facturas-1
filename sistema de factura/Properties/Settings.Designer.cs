@@ -22,5 +22,16 @@ namespace sistema_de_factura.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-6IMEUUJ;Initial Catalog=SISTEMAFACTURAS;Integrated Security=T" +
+            "rue")]
+        public string SISTEMAFACTURASConnectionString {
+            get {
+                return ((string)(this["SISTEMAFACTURASConnectionString"]));
+            }
+        }
     }
 }
