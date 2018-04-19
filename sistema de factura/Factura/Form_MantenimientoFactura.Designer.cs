@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnBuscarFactura = new System.Windows.Forms.Button();
             this.txtCodVendedor = new System.Windows.Forms.TextBox();
             this.txtCodCliente = new System.Windows.Forms.TextBox();
             this.txtSaldoFinal = new System.Windows.Forms.TextBox();
@@ -62,7 +63,6 @@
             this.ColumnPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnBuscarFactura = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -93,6 +93,17 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de la Factura";
+            // 
+            // btnBuscarFactura
+            // 
+            this.btnBuscarFactura.Location = new System.Drawing.Point(412, 34);
+            this.btnBuscarFactura.Name = "btnBuscarFactura";
+            this.btnBuscarFactura.Size = new System.Drawing.Size(75, 32);
+            this.btnBuscarFactura.TabIndex = 11;
+            this.btnBuscarFactura.Text = "...";
+            this.btnBuscarFactura.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBuscarFactura.UseVisualStyleBackColor = true;
+            this.btnBuscarFactura.Click += new System.EventHandler(this.btnBuscarFactura_Click);
             // 
             // txtCodVendedor
             // 
@@ -393,16 +404,6 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnBuscarFactura
-            // 
-            this.btnBuscarFactura.Location = new System.Drawing.Point(412, 34);
-            this.btnBuscarFactura.Name = "btnBuscarFactura";
-            this.btnBuscarFactura.Size = new System.Drawing.Size(75, 32);
-            this.btnBuscarFactura.TabIndex = 11;
-            this.btnBuscarFactura.Text = "...";
-            this.btnBuscarFactura.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBuscarFactura.UseVisualStyleBackColor = true;
             // 
             // Form_MantenimientoFactura
             // 

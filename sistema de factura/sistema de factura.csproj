@@ -66,6 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factura\Form_BuscarFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Factura\Form_BuscarFactura.Designer.cs">
+      <DependentUpon>Form_BuscarFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Factura\Form_MantenimientoFactura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +152,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SISTEMAFACTURASDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SISTEMAFACTURASDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SISTEMAFACTURASDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SISTEMAFACTURASDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SISTEMAFACTURASDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SISTEMAFACTURASDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SISTEMAFACTURASDataSet3.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Vendedor\Form_BuscanVendedor.cs">
       <SubType>Form</SubType>
@@ -159,6 +180,9 @@
     <Compile Include="Vendedor\Form_MantenimientoVendedor.Designer.cs">
       <DependentUpon>Form_MantenimientoVendedor.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Factura\Form_BuscarFactura.resx">
+      <DependentUpon>Form_BuscarFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Factura\Form_MantenimientoFactura.resx">
       <DependentUpon>Form_MantenimientoFactura.cs</DependentUpon>
     </EmbeddedResource>
@@ -233,6 +257,39 @@
     </None>
     <None Include="SISTEMAFACTURASDataSet.xss">
       <DependentUpon>SISTEMAFACTURASDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SISTEMAFACTURASDataSet1.xsc">
+      <DependentUpon>SISTEMAFACTURASDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SISTEMAFACTURASDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SISTEMAFACTURASDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SISTEMAFACTURASDataSet1.xss">
+      <DependentUpon>SISTEMAFACTURASDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SISTEMAFACTURASDataSet2.xsc">
+      <DependentUpon>SISTEMAFACTURASDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="SISTEMAFACTURASDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SISTEMAFACTURASDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SISTEMAFACTURASDataSet2.xss">
+      <DependentUpon>SISTEMAFACTURASDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="SISTEMAFACTURASDataSet3.xsc">
+      <DependentUpon>SISTEMAFACTURASDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="SISTEMAFACTURASDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SISTEMAFACTURASDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SISTEMAFACTURASDataSet3.xss">
+      <DependentUpon>SISTEMAFACTURASDataSet3.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

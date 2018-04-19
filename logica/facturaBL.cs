@@ -29,12 +29,12 @@ namespace logica
             return Obtener.ObtenerVentas();
         }
 
-        public void Insertarfactura(factura entidad)
+        public int Insertarfactura(factura entidad)
         {
             AccesoDatos.IniciarTransaction();
 
             facturaDAL Insertar = new facturaDAL(AccesoDatos);           
-            Insertar.Insertarfactura(entidad);
+           return Insertar.Insertarfactura(entidad);
         }
 
         public void ActualizarVentas(factura entidad, int param)

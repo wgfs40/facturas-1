@@ -1,6 +1,7 @@
 ﻿using Entidades;
 using logica;
 using sistema_de_factura.Proveedor;
+using sistema_de_factura.Reportes;
 using sistema_de_factura.Vendedor;
 using System;
 using System.Collections.Generic;
@@ -106,7 +107,7 @@ namespace sistema_de_factura.Factura
             {
                 text[i].Clear();
             }
-
+            
         }
 
         private void txtCodProducto_KeyDown(object sender, KeyEventArgs e)
@@ -148,8 +149,12 @@ namespace sistema_de_factura.Factura
                 fact.FACTURADETALLE.Add(detallefact);
             }
 
-            facturaBL.Insertarfactura(fact);
-
+           int facturaid = facturaBL.Insertarfactura(fact);
+            Form_Reporte factura = new Form_Reporte(facturaid);
+            factura.Show();
+            Limpiar(txtCodCliente, txtCodFactura, txtCodProducto, txtNombreProducto, txtSaldoFinal, txtSaldoInicial
+                , txtPrecio, txtCantidad,txtClienteNombre,txtVendedorNombre);
+            DataGridViewDetalleFactura.Rows.Clear();
         }
 
        
@@ -179,6 +184,16 @@ namespace sistema_de_factura.Factura
                 default:
                     DataGridViewDetalleFactura.CurrentCell.ReadOnly = true;
                     break;
+            }
+        }
+
+        private void btnBuscarFactura_Click(object sender, EventArgs e)
+        {
+            Form_BuscarFactura factura = new Form_BuscarFactura();
+            if (factura.ShowDialog() == DialogResult.OK)
+            {
+                Form_Reporte reporte = new Form_Reporte(factura.FacturaID);
+                reporte.Show();
             }
         }
     }

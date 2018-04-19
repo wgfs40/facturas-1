@@ -44,7 +44,7 @@ namespace datos
 
         public DataTable ObtenerVentas(int facturaid)
         {
-            string query = "Select * From  factura where ID_FACTURAS = @facturaid";
+            string query = "Select * From  vFactura where ID_FACTURAS = @facturaid";
             using (AdaptadorSQL = new SqlDataAdapter(query, AccesoDatos.ObtenerConexion()))
             {
                 AdaptadorSQL.SelectCommand.Parameters.AddWithValue("@facturaid",facturaid);
@@ -58,7 +58,7 @@ namespace datos
 
         public DataTable ObtenerDetalleFactura(int facturaid)
         {
-            string query = "Select * From  FACTURADETALLE where facturaid = @facturaid";
+            string query = "Select * From  vDetalleFactura where facturaid = @facturaid";
             using (AdaptadorSQL = new SqlDataAdapter(query, AccesoDatos.ObtenerConexion()))
             {
                 AdaptadorSQL.SelectCommand.Parameters.AddWithValue("@facturaid", facturaid);
@@ -69,7 +69,7 @@ namespace datos
             }
             return Dt;
         }
-        public void Insertarfactura(factura factura)
+        public int Insertarfactura(factura factura)
         {
            
             //AccesoDatos.IniciarTransaction();
@@ -106,6 +106,7 @@ namespace datos
                     }
 
                     AccesoDatos.ConfirmarTrasaccion();
+                    return resultado;
                 }
                 catch (Exception)
                 {

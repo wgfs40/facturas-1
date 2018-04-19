@@ -14,20 +14,29 @@ namespace sistema_de_factura.Reportes
     public partial class Form_Reporte : Form
     {
         private facturaBL facturaBL;
+        private int Facturaid = 0;
         public Form_Reporte()
         {
             InitializeComponent();
             facturaBL = new facturaBL();
         }
 
+        public Form_Reporte(int facturaid)
+        {
+            InitializeComponent();
+            facturaBL = new facturaBL();
+            Facturaid = facturaid;
+        }
+
         private void Form_Reporte_Load(object sender, EventArgs e)
         {
-            ReportParameter parameterFactura = new ReportParameter("FacturaId", "6");
-            this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { parameterFactura });
-
-            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSetFactura", facturaBL.ObtenerVentas(6)));
-            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSetDetalle", facturaBL.ObtenerDetalleFactura(6)));
-            this.reportViewer1.RefreshReport();           
+            if (Facturaid > 0)
+            {
+                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSetFactura", facturaBL.ObtenerVentas(Facturaid)));
+                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSetDetalle", facturaBL.ObtenerDetalleFactura(Facturaid)));
+                this.reportViewer1.RefreshReport();
+            }
+                 
         }
     }
 }

@@ -2,31 +2,30 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="SISTEMAFACTURASDataSet">
+    <DataSource Name="SISTEMAFACTURASDataSet3">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>b2dac42f-37af-4f02-a5de-34d57145e518</rd:DataSourceID>
+      <rd:DataSourceID>a6ee0a67-8ff1-4f6d-ae0b-0d8bfdded63b</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="SISTEMAFACTURASDataSet2">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>99b899aa-de93-42d2-824c-a027e3a3d4dd</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSetFactura">
       <Query>
-        <DataSourceName>SISTEMAFACTURASDataSet</DataSourceName>
+        <DataSourceName>SISTEMAFACTURASDataSet2</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
         <Field Name="ID_FACTURAS">
           <DataField>ID_FACTURAS</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ID_CLIENTE">
-          <DataField>ID_CLIENTE</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ID_VENDEDOR">
-          <DataField>ID_VENDEDOR</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="SALDOINICIAL">
@@ -37,19 +36,27 @@
           <DataField>SALDOFINAL</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
+        <Field Name="NOMB_CLIENTE">
+          <DataField>NOMB_CLIENTE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NOMB_VENDEDOR">
+          <DataField>NOMB_VENDEDOR</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>SISTEMAFACTURASDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\Wilson Fdez\Desktop\Proyectos\facturas 1\sistema de factura\SISTEMAFACTURASDataSet.xsd</rd:SchemaPath>
-        <rd:TableName>FACTURA</rd:TableName>
+        <rd:DataSetName>SISTEMAFACTURASDataSet2</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\Wilson Fdez\Desktop\Proyectos\facturas 1\sistema de factura\SISTEMAFACTURASDataSet2.xsd</rd:SchemaPath>
+        <rd:TableName>vFactura</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>FACTURATableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>vFacturaTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
     <DataSet Name="DataSetDetalle">
       <Query>
-        <DataSourceName>SISTEMAFACTURASDataSet</DataSourceName>
+        <DataSourceName>SISTEMAFACTURASDataSet3</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
@@ -57,13 +64,9 @@
           <DataField>ID</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="PRODUCTOID">
-          <DataField>PRODUCTOID</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="FACTURAID">
-          <DataField>FACTURAID</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+        <Field Name="DESC_PRODUCTO">
+          <DataField>DESC_PRODUCTO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="CANTIDAD">
           <DataField>CANTIDAD</DataField>
@@ -73,14 +76,22 @@
           <DataField>PRECIO</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
+        <Field Name="FACTURAID">
+          <DataField>FACTURAID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SubTotal">
+          <DataField>SubTotal</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>SISTEMAFACTURASDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\Wilson Fdez\Desktop\Proyectos\facturas 1\sistema de factura\SISTEMAFACTURASDataSet.xsd</rd:SchemaPath>
-        <rd:TableName>FACTURADETALLE</rd:TableName>
+        <rd:DataSetName>SISTEMAFACTURASDataSet3</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\Wilson Fdez\Desktop\Proyectos\facturas 1\sistema de factura\SISTEMAFACTURASDataSet3.xsd</rd:SchemaPath>
+        <rd:TableName>vDetalleFactura</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>FACTURADETALLETableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>vDetalleFacturaTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -95,10 +106,13 @@
                   <Width>0.90278in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.90278in</Width>
+                  <Width>2.04445in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.90278in</Width>
+                  <Width>1.27777in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1in</Width>
@@ -130,6 +144,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>PaleTurquoise</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -160,6 +175,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>PaleTurquoise</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -190,6 +206,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>PaleTurquoise</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -220,6 +237,38 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>PaleTurquoise</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox4">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Sub-Total</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox4</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>PaleTurquoise</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -265,21 +314,21 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="PRODUCTOID">
+                        <Textbox Name="DESC_PRODUCTO">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PRODUCTOID.Value</Value>
+                                  <Value>=Fields!DESC_PRODUCTO.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>PRODUCTOID</rd:DefaultName>
+                          <rd:DefaultName>DESC_PRODUCTO</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -353,12 +402,209 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="SubTotal">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!SubTotal.Value</Value>
+                                  <Style>
+                                    <Format>#,0.00;(#,0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>SubTotal</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <rd:Selected>true</rd:Selected>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox16">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox16</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox17">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox17</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox18">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox18</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox19">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Total</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox19</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox20">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=cdbl(Sum(Fields!SubTotal.Value)).ToString("n")</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox20</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                   </TablixCells>
                 </TablixRow>
               </TablixRows>
             </TablixBody>
             <TablixColumnHierarchy>
               <TablixMembers>
+                <TablixMember />
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
@@ -373,13 +619,16 @@
                 <TablixMember>
                   <Group Name="Details" />
                 </TablixMember>
+                <TablixMember>
+                  <KeepWithGroup>Before</KeepWithGroup>
+                </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSetDetalle</DataSetName>
             <Top>0.05556in</Top>
             <Left>0.28833in</Left>
-            <Height>0.375in</Height>
-            <Width>3.70833in</Width>
+            <Height>0.625in</Height>
+            <Width>6.225in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -387,13 +636,13 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>0.65833in</Height>
+        <Height>0.68056in</Height>
         <Style />
       </Body>
-      <Width>6.5in</Width>
+      <Width>7.73in</Width>
       <Page>
         <PageHeader>
-          <Height>1.34167in</Height>
+          <Height>1.805in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -448,7 +697,7 @@
               <rd:DefaultName>Textbox2</rd:DefaultName>
               <Top>0.68833in</Top>
               <Left>0.13in</Left>
-              <Height>0.37556in</Height>
+              <Height>0.97278in</Height>
               <Width>2.1in</Width>
               <ZIndex>1</ZIndex>
               <Style>
@@ -461,6 +710,216 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
+            <Rectangle Name="Rectangle1">
+              <ReportItems>
+                <Textbox Name="Textbox8">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Factura No.</Value>
+                          <Style>
+                            <FontWeight>Bold</FontWeight>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox8</rd:DefaultName>
+                  <Top>0.12556in</Top>
+                  <Height>0.25in</Height>
+                  <Width>0.78333in</Width>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="Textbox10">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=First(Fields!FACTURAID.Value, "DataSetDetalle")</Value>
+                          <Style>
+                            <FontWeight>Bold</FontWeight>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox10</rd:DefaultName>
+                  <Top>0.12556in</Top>
+                  <Left>0.85in</Left>
+                  <Height>0.25in</Height>
+                  <Width>0.725in</Width>
+                  <ZIndex>1</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="Textbox21">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Vendedor</Value>
+                          <Style>
+                            <FontWeight>Bold</FontWeight>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox21</rd:DefaultName>
+                  <Top>0.445in</Top>
+                  <Height>0.25in</Height>
+                  <Width>0.78333in</Width>
+                  <ZIndex>2</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="Textbox11">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=First(Fields!NOMB_VENDEDOR.Value, "DataSetFactura")</Value>
+                          <Style>
+                            <FontWeight>Bold</FontWeight>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox10</rd:DefaultName>
+                  <Top>0.445in</Top>
+                  <Left>0.85in</Left>
+                  <Height>0.25in</Height>
+                  <Width>2.13333in</Width>
+                  <ZIndex>3</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="Textbox23">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Cliente</Value>
+                          <Style>
+                            <FontWeight>Bold</FontWeight>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox23</rd:DefaultName>
+                  <Top>0.72278in</Top>
+                  <Height>0.25in</Height>
+                  <Width>0.78333in</Width>
+                  <ZIndex>4</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="Textbox12">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=First(Fields!NOMB_CLIENTE.Value, "DataSetFactura")</Value>
+                          <Style>
+                            <FontWeight>Bold</FontWeight>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox10</rd:DefaultName>
+                  <Top>0.73667in</Top>
+                  <Left>0.83889in</Left>
+                  <Height>0.25in</Height>
+                  <Width>2.14444in</Width>
+                  <ZIndex>5</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+              </ReportItems>
+              <KeepTogether>true</KeepTogether>
+              <Top>0.68833in</Top>
+              <Left>4.28833in</Left>
+              <Height>1.08334in</Height>
+              <Width>2.98333in</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <Border>
+                  <Style>Solid</Style>
+                </Border>
+                <BackgroundColor>PaleTurquoise</BackgroundColor>
+              </Style>
+            </Rectangle>
           </ReportItems>
           <Style>
             <Border>
@@ -486,23 +945,10 @@
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParameters>
-    <ReportParameter Name="FacturaId">
-      <DataType>Integer</DataType>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-  </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
       <NumberOfRows>2</NumberOfRows>
-      <CellDefinitions>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>FacturaId</ParameterName>
-        </CellDefinition>
-      </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
