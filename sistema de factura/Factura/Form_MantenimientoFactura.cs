@@ -153,7 +153,7 @@ namespace sistema_de_factura.Factura
             Form_Reporte factura = new Form_Reporte(facturaid);
             factura.Show();
             Limpiar(txtCodCliente, txtCodFactura, txtCodProducto, txtNombreProducto, txtSaldoFinal, txtSaldoInicial
-                , txtPrecio, txtCantidad,txtClienteNombre,txtVendedorNombre);
+                , txtPrecio, txtCantidad,txtClienteNombre,txtVendedorNombre,txtCodVendedor);
             DataGridViewDetalleFactura.Rows.Clear();
         }
 
